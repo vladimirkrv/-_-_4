@@ -6,12 +6,10 @@ OUTPUT_FILENAME = "output.json"
 
 
 def task() -> None:
-    data = []
 
     with open(INPUT_FILENAME, newline='') as csvfile:
         reader = csv.DictReader(csvfile)
-        for row in reader:
-            data.append(row)
+        data = [row for row in reader]
 
     with open(OUTPUT_FILENAME, 'w') as jsonfile:
         json.dump(data, jsonfile, indent=4)
